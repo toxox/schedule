@@ -26,15 +26,9 @@
 
 <script type="text/x-handlebars" data-template-name="day">
   Selected day: {{ id }}
-  {{ render "timetable" timetable }}
-</script>
-
-<script type="text/x-handlebars" data-template-name="timetable">
-  <ul>
-    {{#each lesson in lessons}}
-      <li>{{ render "lesson" lesson }}</li>
-    {{/each}}
-  </ul>
+  {{#each lesson in lessons}}
+    <li>{{ render "lesson" lesson }}</li>
+  {{/each}}
 </script>
 
 <script type="text/x-handlebars" data-template-name="lesson">

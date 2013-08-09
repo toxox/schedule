@@ -25,8 +25,6 @@ Schedule.DaysController = Ember.ArrayController.extend();
 
 Schedule.DayController = Ember.ObjectController.extend();
 
-Schedule.TimetableController = Ember.ObjectController.extend();
-
 Schedule.LessonController = Ember.ObjectController.extend({
   isEditing: false,
 
@@ -48,10 +46,6 @@ Schedule.Store = DS.Store.extend({
 });
 
 Schedule.Day = DS.Model.extend({
-  timetable: DS.belongsTo('Schedule.Timetable')
-});
-
-Schedule.Timetable = DS.Model.extend({
   lessons: DS.hasMany('Schedule.Lesson')
 });
 
@@ -60,15 +54,9 @@ Schedule.Lesson = DS.Model.extend({
 });
 
 Schedule.Day.FIXTURES = [
-  {id: "Monday", timetable: 1},
-  {id: "Tuesday", timetable: 2},
-  {id: "Wednesday", timetable: 3}
-]
-
-Schedule.Timetable.FIXTURES = [
-  {id: 1, day: "Monday", lessons: [101, 102] },
-  {id: 2, day: "Monday", lessons: [103] },
-  {id: 3, day: "Tuesday", lessons: [] }
+  {id: "Monday", lessons: [101, 102]},
+  {id: "Tuesday", lessons: [103]},
+  {id: "Wednesday", lessons: []}
 ]
 
 Schedule.Lesson.FIXTURES = [
