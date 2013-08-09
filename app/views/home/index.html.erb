@@ -1,0 +1,52 @@
+<script type="text/x-handlebars" data-template-name="application">
+  Schedule
+  <p>{{ outlet }}</p>
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+  Hello, Ember
+</script>
+
+<script type="text/x-handlebars" data-template-name="days">
+  {{ partial "daysMenu"}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="days/index">
+  <h2>Select a day</h2>
+</script>
+
+<script type="text/x-handlebars" data-template-name="_daysMenu">
+  <h2>Days</h2>
+  {{#each day in controller}}
+    {{#linkTo 'day' day}}{{ day.id }}{{/linkTo}}
+  {{/each}}
+  <br><br>
+  {{ outlet }}
+</script>
+
+<script type="text/x-handlebars" data-template-name="day">
+  Selected day: {{ id }}
+  {{ render "timetable" timetable }}
+</script>
+
+<script type="text/x-handlebars" data-template-name="timetable">
+  <ul>
+    {{#each lesson in lessons}}
+      <li>{{ render "lesson" lesson }}</li>
+    {{/each}}
+  </ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name="lesson">
+  {{#if isEditing}}
+    {{partial "lesson/edit"}}
+    <button {{action 'doneEditing'}}>Done</button>
+  {{else}}
+    <button {{action 'edit'}}>Edit</button>
+  {{/if}}
+  {{ title }}
+</script>
+
+<script type="text/x-handlebars" id="lesson/_edit">
+  <p>{{view Ember.TextField valueBinding="title"}}</p>
+</script>
