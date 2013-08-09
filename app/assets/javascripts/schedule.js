@@ -38,7 +38,7 @@ Schedule.LessonController = Ember.ObjectController.extend({
 //Model
 Schedule.Store = DS.Store.extend({
   revision: 12,
-  adapter: 'DS.FixtureAdapter'
+  adapter: 'DS.RESTAdapter'
 });
 
 Schedule.Day = DS.Model.extend({
