@@ -19,9 +19,7 @@ Schedule.DaysRoute = Ember.Route.extend({
   model: function () {
     return Schedule.Day.find();
   }
-})
-
-Schedule.DaysController = Ember.ArrayController.extend();
+});
 
 Schedule.DayController = Ember.ObjectController.extend();
 
@@ -35,17 +33,16 @@ Schedule.LessonController = Ember.ObjectController.extend({
   doneEditing: function () {
     this.set('isEditing', false);
   }
-
-
 });
 
 //Model
 Schedule.Store = DS.Store.extend({
-  revision: 11,
+  revision: 12,
   adapter: 'DS.FixtureAdapter'
 });
 
 Schedule.Day = DS.Model.extend({
+  name: DS.attr('string'),
   lessons: DS.hasMany('Schedule.Lesson')
 });
 
@@ -54,9 +51,9 @@ Schedule.Lesson = DS.Model.extend({
 });
 
 Schedule.Day.FIXTURES = [
-  {id: "Monday", lessons: [101, 102]},
-  {id: "Tuesday", lessons: [103]},
-  {id: "Wednesday", lessons: []}
+  {id:1, name: "Monday", lessons: [101, 102]},
+  {id:2, name: "Tuesday", lessons: [103]},
+  {id:3, name: "Wednesday", lessons: []}
 ]
 
 Schedule.Lesson.FIXTURES = [

@@ -18,14 +18,14 @@
 <script type="text/x-handlebars" data-template-name="_daysMenu">
   <h2>Days</h2>
   {{#each day in controller}}
-    {{#linkTo 'day' day}}{{ day.id }}{{/linkTo}}
+    {{#linkTo 'day' day}}{{ day.name }}{{/linkTo}}
   {{/each}}
   <br><br>
   {{ outlet }}
 </script>
 
 <script type="text/x-handlebars" data-template-name="day">
-  Selected day: {{ id }}
+  Selected day: {{ name }}
   {{#each lesson in lessons}}
     <li>{{ render "lesson" lesson }}</li>
   {{/each}}
