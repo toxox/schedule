@@ -10,11 +10,11 @@ class LessonsController < ApplicationController
   end
 
   def create
-    respond_with Lesson.create(day_params)
+    respond_with Lesson.create(lesson_params)
   end
 
   def update
-    respond_with Lesson.update(params[:id], day_params)
+    respond_with Lesson.update(params[:id], lesson_params)
   end
 
   def destroy

@@ -32,12 +32,13 @@ Schedule.LessonController = Ember.ObjectController.extend({
 
   doneEditing: function () {
     this.set('isEditing', false);
+    this.get('store').commit();
   }
 });
 
 //Model
 Schedule.Store = DS.Store.extend({
-  revision: 13,
+  revision: 12,
   adapter: 'DS.RESTAdapter'
 });
 
@@ -49,6 +50,5 @@ Schedule.Day = DS.Model.extend({
 Schedule.Lesson = DS.Model.extend({
   title: DS.attr('string'),
   teacher: DS.attr('string'),
-  time: DS.attr('string'),
-  day: DS.belongsTo('Schedule.Day')
+  time: DS.attr('string')
 });
