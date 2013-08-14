@@ -33,7 +33,15 @@ Schedule.LessonController = Ember.ObjectController.extend({
   doneEditing: function () {
     this.set('isEditing', false);
     this.get('store').commit();
+  },
+
+  delete: function () {
+    if (window.confirm("Are you sure?")) {
+      this.get('content').deleteRecord();
+      this.get('store').commit();
+    };
   }
+
 });
 
 //Model
