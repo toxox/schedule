@@ -37,7 +37,7 @@ Schedule.LessonController = Ember.ObjectController.extend({
 
 //Model
 Schedule.Store = DS.Store.extend({
-  revision: 12,
+  revision: 13,
   adapter: 'DS.RESTAdapter'
 });
 
@@ -47,17 +47,8 @@ Schedule.Day = DS.Model.extend({
 });
 
 Schedule.Lesson = DS.Model.extend({
-  title: DS.attr('string')
+  title: DS.attr('string'),
+  teacher: DS.attr('string'),
+  time: DS.attr('string'),
+  day: DS.belongsTo('Schedule.Day')
 });
-
-Schedule.Day.FIXTURES = [
-  {id:1, name: "Monday", lessons: [101, 102]},
-  {id:2, name: "Tuesday", lessons: [103]},
-  {id:3, name: "Wednesday", lessons: []}
-]
-
-Schedule.Lesson.FIXTURES = [
-  {id: 101, title: "hurr durr 101"},
-  {id: 102, title: "hurr durr 102"},
-  {id: 103, title: "hurr durr 103"},
-]

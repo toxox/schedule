@@ -38,9 +38,11 @@
   {{else}}
     <button {{action 'edit'}}>Edit</button>
   {{/if}}
-  {{ title }}
+  {{ title }} | {{ teacher }} | {{ time }}
 </script>
 
 <script type="text/x-handlebars" id="lesson/_edit">
   <p>{{view Ember.TextField valueBinding="title"}}</p>
+  <p>{{view Ember.TextField valueBinding="teacher"}}</p>
+  <p>{{view Ember.TextField valueBinding="time"}}</p>
 </script>
