@@ -28,7 +28,7 @@ Schedule.DayController = Ember.ObjectController.extend({
       teacher: this.get('teacher'),
       time: this.get('time')
     });
-
+    this.setProperties({'title': '', 'teacher': '', 'time': ''});
     this.get("model.transaction").commit();
   }
 });
@@ -70,11 +70,3 @@ Schedule.Lesson = DS.Model.extend({
   time: DS.attr('string'),
   day: DS.belongsTo('Schedule.Day')
 });
-
-
-// Schedule.then(function () {
-//   var firstDay = Schedule.Day.find(1);
-//   console.log(firstDay)
-//   var lessonone = Schedule.Lesson.createRecord({day: firstDay, title: "asdfasdf"})
-//   console.log(lessonone.title)
-// });
