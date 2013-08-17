@@ -21,7 +21,17 @@ Schedule.DaysRoute = Ember.Route.extend({
   }
 });
 
-Schedule.DayController = Ember.ObjectController.extend();
+Schedule.DayController = Ember.ObjectController.extend({
+  addLesson: function () {
+    this.get('model.lessons').createRecord({
+      title: this.get('title'),
+      teacher: this.get('teacher'),
+      time: this.get('time')
+    });
+
+    this.get("model.transaction").commit();
+  }
+});
 
 Schedule.LessonController = Ember.ObjectController.extend({
   isEditing: false,
@@ -41,7 +51,6 @@ Schedule.LessonController = Ember.ObjectController.extend({
       this.get('store').commit();
     };
   }
-
 });
 
 //Model
@@ -58,5 +67,14 @@ Schedule.Day = DS.Model.extend({
 Schedule.Lesson = DS.Model.extend({
   title: DS.attr('string'),
   teacher: DS.attr('string'),
-  time: DS.attr('string')
+  time: DS.attr('string'),
+  day: DS.belongsTo('Schedule.Day')
 });
+
+
+// Schedule.then(function () {
+//   var firstDay = Schedule.Day.find(1);
+//   console.log(firstDay)
+//   var lessonone = Schedule.Lesson.createRecord({day: firstDay, title: "asdfasdf"})
+//   console.log(lessonone.title)
+// });

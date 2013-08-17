@@ -26,6 +26,7 @@
 
 <script type="text/x-handlebars" data-template-name="day">
   Selected day: {{ name }}
+  {{partial "day/edit"}}
   {{#each lesson in lessons}}
     <li>{{ render "lesson" lesson }}</li>
   {{/each}}
@@ -47,4 +48,12 @@
   <p>{{view Ember.TextField valueBinding="title"}}</p>
   <p>{{view Ember.TextField valueBinding="teacher"}}</p>
   <p>{{view Ember.TextField valueBinding="time"}}</p>
+</script>
+
+
+<script type="text/x-handlebars" id="day/_edit">
+    {{view Ember.TextField valueBinding="title"}}
+    {{view Ember.TextField valueBinding="teacher"}}
+    {{view Ember.TextField valueBinding="time"}}
+    <button {{action 'addLesson'}}>Add new lesson</button>
 </script>
