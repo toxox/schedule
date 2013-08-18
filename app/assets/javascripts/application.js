@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require handlebars
 //= require ember
@@ -21,3 +22,5 @@
 
 // for more details see: http://emberjs.com/guides/application/
 Schedule = Ember.Application.create();
+
+$(function(){ $(document).foundation(); });
