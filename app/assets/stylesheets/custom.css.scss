@@ -1,0 +1,41 @@
+body {
+  padding-top: 50px;
+}
+
+#days {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.4em;
+  .panel {
+    min-width: 181px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+  }
+  :hover, .active:hover {
+    background-color: #4E4E4E;
+  }
+
+  .active {
+    background-color: #676767;
+  }
+}
+
+#lessons {
+  min-width: 600px;
+}
+
+[class*="foundicon-"] {
+  display: inline;
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  line-height: inherit;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+
+hr {
+  max-width: 500px;
+}

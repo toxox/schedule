@@ -1,16 +1,9 @@
 <script type="text/x-handlebars" data-template-name="application">
   <div class="row">
     <div class="small-11 large-centered columns">
-      Schedule
       {{ outlet }}
     </div>
   </div>
-
-
-</script>
-
-<script type="text/x-handlebars" data-template-name="index">
-  Hello, Ember
 </script>
 
 <script type="text/x-handlebars" data-template-name="days">
@@ -19,47 +12,69 @@
 
 <script type="text/x-handlebars" data-template-name="days/index">
   <h2>Select a day</h2>
+  <i class="general foundicon-heart"></i>
 </script>
 
 <script type="text/x-handlebars" data-template-name="_daysMenu">
-  <h2>Days</h2>
-  {{#each day in controller}}
-    {{#linkTo 'day' day}}{{ day.name }}{{/linkTo}}
-  {{/each}}
-  <br><br>
-  {{ outlet }}
+  <div class="row left">
+    <div class="small-3 columns" id="days">
+      {{#each day in controller}}
+        {{#linkTo 'day' day class="panel six columns"}}{{ day.name }}{{/linkTo}}
+      {{/each}}
+      <br><br>
+    </div>
+    <div class="small-9 columns" id="lessons">
+      {{ outlet }}
+    </div>
+  </div>
 </script>
 
 <script type="text/x-handlebars" data-template-name="day">
-  Selected day: {{ name }}
-  {{partial "day/edit"}}
   {{#each lesson in lessons}}
-    <li>{{ render "lesson" lesson }}</li>
+    <div>{{ render "lesson" lesson }}</div>
   {{/each}}
+  {{#if isAdding}}
+    {{partial "day/edit"}}
+  {{else}}
+    <i class="general foundicon-plus" {{action 'add'}}></i>
+  {{/if}}
 </script>
 
 <script type="text/x-handlebars" data-template-name="lesson">
+  <ul class="no-bullet">
+    <li><b>{{ title }}</b></li>
+    <li><i>Teacher: {{ teacher }}</i></li>
+    <li>At {{ time }}</li>
+  </ul>
   {{#if isEditing}}
     {{partial "lesson/edit"}}
-    <button {{action 'doneEditing'}}>Done</button>
+    <i class="general foundicon-checkmark" {{action 'doneEditing'}}></i>
+    <br>
   {{else}}
-    <button {{action 'edit'}}>Edit</button>
-    <button {{action 'delete'}}>Delete</button>
-
+    <i class="general foundicon-edit" {{action 'edit'}}></i>
+    <i class="general foundicon-remove" {{action 'delete'}}></i>
   {{/if}}
-  {{ title }} | {{ teacher }} | {{ time }}
+  <hr>
 </script>
 
 <script type="text/x-handlebars" id="lesson/_edit">
-  <p>{{view Ember.TextField valueBinding="title"}}</p>
-  <p>{{view Ember.TextField valueBinding="teacher"}}</p>
-  <p>{{view Ember.TextField valueBinding="time"}}</p>
+  <div class="row">
+    <div class="small-6 columns">
+      {{view Ember.TextField valueBinding="title"}}
+      {{view Ember.TextField valueBinding="teacher"}}
+      {{view Ember.TextField valueBinding="time"}}
+    </div>
+  </div>
 </script>
 
 
 <script type="text/x-handlebars" id="day/_edit">
-    {{view Ember.TextField valueBinding="title"}}
-    {{view Ember.TextField valueBinding="teacher"}}
-    {{view Ember.TextField valueBinding="time"}}
-    <button {{action 'addLesson'}}>Add new lesson</button>
+    <div class="row">
+      <div class="small-6 columns">
+        {{view Ember.TextField valueBinding="title"}}
+        {{view Ember.TextField valueBinding="teacher"}}
+        {{view Ember.TextField valueBinding="time"}}
+        <i class="general foundicon-checkmark" {{action 'addLesson'}}></i>
+      </div>
+    </div>
 </script>

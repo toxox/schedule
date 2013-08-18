@@ -22,6 +22,12 @@ Schedule.DaysRoute = Ember.Route.extend({
 });
 
 Schedule.DayController = Ember.ObjectController.extend({
+  isAdding: false,
+
+  add: function () {
+    this.set('isAdding', true)
+  },
+
   addLesson: function () {
     this.get('model.lessons').createRecord({
       title: this.get('title'),
@@ -29,6 +35,7 @@ Schedule.DayController = Ember.ObjectController.extend({
       time: this.get('time')
     });
     this.setProperties({'title': '', 'teacher': '', 'time': ''});
+    this.set('isAdding', false);
     this.get("model.transaction").commit();
   }
 });
