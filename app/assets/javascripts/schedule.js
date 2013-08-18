@@ -37,7 +37,13 @@ Schedule.DayController = Ember.ObjectController.extend({
     this.setProperties({'title': '', 'teacher': '', 'time': ''});
     this.set('isAdding', false);
     this.get("model.transaction").commit();
+  },
+
+  cancel: function () {
+    this.setProperties({'title': '', 'teacher': '', 'time': ''});
+    this.set('isAdding', false);
   }
+
 });
 
 Schedule.LessonController = Ember.ObjectController.extend({
@@ -50,6 +56,11 @@ Schedule.LessonController = Ember.ObjectController.extend({
   doneEditing: function () {
     this.set('isEditing', false);
     this.get('store').commit();
+  },
+
+  cancel: function () {
+    this.get('model.transaction').rollback();
+    this.set('isEditing', false);
   },
 
   delete: function () {
