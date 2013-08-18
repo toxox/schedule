@@ -12,7 +12,6 @@
 
 <script type="text/x-handlebars" data-template-name="days/index">
   <h2>Select a day</h2>
-  <i class="general foundicon-heart"></i>
 </script>
 
 <script type="text/x-handlebars" data-template-name="_daysMenu">
@@ -34,7 +33,12 @@
     <div>{{ render "lesson" lesson }}</div>
   {{/each}}
   {{#if isAdding}}
-    {{partial "day/edit"}}
+  <div class="row">
+    <div class="small-6 columns">
+      {{partial "edit"}}
+      <i class="general foundicon-checkmark" {{action 'addLesson'}}></i>
+    </div>
+  </div>
   {{else}}
     <i class="general foundicon-plus" {{action 'add'}}></i>
   {{/if}}
@@ -47,7 +51,11 @@
     <li>At {{ time }}</li>
   </ul>
   {{#if isEditing}}
-    {{partial "lesson/edit"}}
+  <div class="row">
+    <div class="small-6 columns">
+      {{partial "edit"}}
+    </div>
+  </div>
     <i class="general foundicon-checkmark" {{action 'doneEditing'}}></i>
     <br>
   {{else}}
@@ -57,24 +65,23 @@
   <hr>
 </script>
 
-<script type="text/x-handlebars" id="lesson/_edit">
-  <div class="row">
-    <div class="small-6 columns">
-      {{view Ember.TextField valueBinding="title"}}
-      {{view Ember.TextField valueBinding="teacher"}}
-      {{view Ember.TextField valueBinding="time"}}
-    </div>
+<script type="text/x-handlebars" id="_edit">
+  <div class="small-3 columns">
+    <label for="title" class="right inline">Title</label>
   </div>
-</script>
-
-
-<script type="text/x-handlebars" id="day/_edit">
-    <div class="row">
-      <div class="small-6 columns">
-        {{view Ember.TextField valueBinding="title"}}
-        {{view Ember.TextField valueBinding="teacher"}}
-        {{view Ember.TextField valueBinding="time"}}
-        <i class="general foundicon-checkmark" {{action 'addLesson'}}></i>
-      </div>
-    </div>
+  <div class="small-9 columns">
+    {{view Ember.TextField valueBinding="title" id="title"}}
+  </div>
+  <div class="small-3 columns">
+    <label for="teacher" class="right inline">Teacher</label>
+  </div>
+  <div class="small-9 columns">
+    {{view Ember.TextField valueBinding="teacher" id="teacher"}}
+  </div>
+  <div class="small-3 columns">
+    <label for="time" class="right inline">Time</label>
+  </div>
+  <div class="small-9 columns">
+    {{view Ember.TextField valueBinding="time" id="time"}}
+  </div>
 </script>
