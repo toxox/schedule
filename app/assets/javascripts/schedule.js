@@ -22,6 +22,13 @@ Schedule.DaysRoute = Ember.Route.extend({
 });
 
 Schedule.DayController = Ember.ObjectController.extend({
+  lessons: (function () {
+    return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
+      sortProperties: ["time"],
+      content: this.get('content.lessons')
+    });
+  }).property('content.lessons'),
+
   isAdding: false,
 
   add: function () {
@@ -43,7 +50,6 @@ Schedule.DayController = Ember.ObjectController.extend({
     this.setProperties({'title': '', 'teacher': '', 'time': ''});
     this.set('isAdding', false);
   }
-
 });
 
 Schedule.LessonController = Ember.ObjectController.extend({
