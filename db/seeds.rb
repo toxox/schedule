@@ -6,13 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Day.create(name: "Monday")
-Day.create(name: "Wednesday")
-Day.create(name: "Friday")
+days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 
-Lesson.create(title: "HURR DURR 101", teacher: "Some dude1",
- time: "10:20", day_id: 1)
-Lesson.create(title: "HURR DURR 102", teacher: "Some dude2",
- time: "10:20", day_id: 1)
-Lesson.create(title: "HURR DURR 103", teacher: "Some dude3",
- time: "10:20", day_id: 3)
+days.each { |day| Day.create(name: day)}
