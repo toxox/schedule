@@ -1,0 +1,14 @@
+{{#each lesson in lessons}}
+  <div>{{ render "lesson" lesson }}</div>
+{{/each}}
+{{#if isAdding}}
+<div class="row">
+  <div class="small-6 columns">
+    {{partial "fields"}}
+    <i class="general foundicon-checkmark" {{action 'addLesson'}}></i>
+    <i class="general foundicon-remove" {{action 'cancel'}}></i>
+  </div>
+</div>
+{{else}}
+  <i class="general foundicon-plus" {{action 'add'}}></i>
+{{/if}}

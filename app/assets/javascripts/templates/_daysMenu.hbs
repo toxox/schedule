@@ -1,0 +1,11 @@
+<div class="row left">
+  <div class="small-3 columns" id="days">
+    {{#each day in controller}}
+      {{#linkTo 'day' day class="panel six columns"}}{{ day.name }}{{/linkTo}}
+    {{/each}}
+    <br><br>
+  </div>
+  <div class="small-9 columns" id="lessons">
+    {{ outlet }}
+  </div>
+</div>

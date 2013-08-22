@@ -1,0 +1,19 @@
+<ul class="no-bullet">
+  <li><b>{{ title }}</b></li>
+  <li><i>Teacher: {{ teacher }}</i></li>
+  <li>At {{ time }}</li>
+</ul>
+{{#if isEditing}}
+<div class="row">
+  <div class="small-6 columns">
+    {{partial "fields"}}
+  </div>
+</div>
+  <i class="general foundicon-checkmark" {{action 'doneEditing'}}></i>
+  <i class="general foundicon-remove" {{action 'cancel'}}></i>
+  <br>
+{{else}}
+  <i class="general foundicon-edit" {{action 'edit'}}></i>
+  <i class="general foundicon-remove" {{action 'delete'}}></i>
+{{/if}}
+<hr>
