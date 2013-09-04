@@ -45,6 +45,6 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'ember-rails'
-gem 'ember-source', '1.0.0.rc6.4'
+gem 'ember-source', '1.0.0'
 gem 'zurb-foundation'
-gem 'foundation-icons-sass-rails'
+gem 'foundation-icons-sass-rails', '2.0.0'
