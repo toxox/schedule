@@ -16,11 +16,13 @@ Schedule.DayController = Ember.ObjectController.extend
       title: @get("title")
       teacher: @get("teacher")
       time: @get("time")
+      location: @get("location")
 
     @setProperties
       title: ""
       teacher: ""
       time: ""
+      location: ""
 
     @set "isAdding", false
     @get("model.transaction").commit()
@@ -30,5 +32,6 @@ Schedule.DayController = Ember.ObjectController.extend
       title: ""
       teacher: ""
       time: ""
+      location: ""
 
     @set "isAdding", false
