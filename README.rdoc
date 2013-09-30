@@ -1,1 +1,1 @@
-Nothing to see here.
+This is a small schedule app for my university study group. Built with Rails and Ember.
