@@ -3,4 +3,5 @@ class Lesson < ActiveRecord::Base
   validates :title, presence: true, length: { maximum: 20 }
   validates :teacher, presence: true, length: { maximum: 20 }
   validates :time, presence: true, format: { with: /\d\d:\d\d/ }
+  validates :location, presence: true, length: { maximum: 15 }
 end
